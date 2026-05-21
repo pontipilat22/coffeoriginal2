@@ -35,7 +35,7 @@ export default function SlidePricing() {
         {/* Main Phases List */}
         <div className="lg:col-span-8 flex flex-col gap-4">
           <div className="overflow-hidden bg-[#101012] border border-[#2A2A2E] rounded-2xl shadow-sm">
-            <div className="p-4 bg-[#1A1A1E] border-b border-[#2A2A2E] grid grid-cols-12 gap-2 text-xs font-mono font-bold text-[#8A8A8E] uppercase">
+            <div className="p-4 bg-[#1A1A1E] border-b border-[#2A2A2E] hidden sm:grid grid-cols-12 gap-2 text-xs font-mono font-bold text-[#8A8A8E] uppercase">
               <span className="col-span-6 md:col-span-7">Этап работ</span>
               <span className="col-span-3 md:col-span-2 text-center">Сроки</span>
               <span className="col-span-3 md:col-span-3 text-right">Стоимость</span>
@@ -50,14 +50,14 @@ export default function SlidePricing() {
                 if (p.id === 4) durationText = "2–3 нед.";
 
                 return (
-                  <div key={p.id} className="p-4 grid grid-cols-12 gap-2 items-center hover:bg-[#1A1A1E]/20 transition">
+                  <div key={p.id} className="p-4 flex flex-col gap-2.5 sm:grid sm:grid-cols-12 sm:gap-2 sm:items-center hover:bg-[#1A1A1E]/20 transition text-left">
                     {/* Phase details */}
-                    <div className="col-span-6 md:col-span-7 space-y-1">
+                    <div className="sm:col-span-6 md:col-span-7 space-y-1">
                       <div className="flex items-center gap-2">
-                        <span className="inline-flex items-center justify-center w-5 h-5 text-[10px] font-bold text-[#D4A373] bg-[#D4A373]/10 rounded-full">
+                        <span className="inline-flex items-center justify-center w-5 h-5 text-[10px] font-bold text-[#D4A373] bg-[#D4A373]/10 rounded-full shrink-0">
                           {p.id}
                         </span>
-                        <h4 className="text-sm font-semibold text-white block leading-tight">
+                        <h4 className="text-sm font-semibold text-white leading-tight">
                           {p.title}
                         </h4>
                       </div>
@@ -66,18 +66,23 @@ export default function SlidePricing() {
                       </p>
                     </div>
 
-                    {/* Duration */}
-                    <div className="col-span-3 md:col-span-2 text-center">
-                      <span className="text-sm font-bold text-white">
-                        {durationText}
-                      </span>
-                    </div>
+                    {/* Duration & Cost inline on mobile */}
+                    <div className="flex justify-between items-center sm:contents border-t border-[#2A2A2E]/30 pt-2 sm:pt-0 mt-1 sm:mt-0">
+                      {/* Duration */}
+                      <div className="sm:col-span-3 md:col-span-2 sm:text-center flex sm:block items-center gap-1.5">
+                        <span className="text-[10px] text-[#8A8A8E] font-mono uppercase sm:hidden">Срок:</span>
+                        <span className="text-xs sm:text-sm font-bold text-white">
+                          {durationText}
+                        </span>
+                      </div>
 
-                    {/* Cost */}
-                    <div className="col-span-3 md:col-span-3 text-right">
-                      <span className="text-sm font-bold font-mono text-white">
-                        {formatKZT(p.costTenge)}
-                      </span>
+                      {/* Cost */}
+                      <div className="sm:col-span-3 md:col-span-3 sm:text-right flex sm:block items-center gap-1.5">
+                        <span className="text-[10px] text-[#8A8A8E] font-mono uppercase sm:hidden">Стоимость:</span>
+                        <span className="text-xs sm:text-sm font-bold font-mono text-[#D4A373] sm:text-white">
+                          {formatKZT(p.costTenge)}
+                        </span>
+                      </div>
                     </div>
                   </div>
                 );

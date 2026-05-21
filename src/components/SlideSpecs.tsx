@@ -70,8 +70,8 @@ export default function SlideSpecs() {
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
         
-        {/* Navigation Tabs (Vertical/Grid on mobile) */}
-        <div className="lg:col-span-4 flex flex-col gap-2 py-1">
+        {/* Navigation Tabs (Grid on mobile, vertical list on desktop) */}
+        <div className="lg:col-span-4 grid grid-cols-2 lg:flex lg:flex-col gap-2 py-1">
           <button
             onClick={() => setActiveTab("client")}
             className={`p-3 rounded-xl text-left border transition flex items-center gap-3 cursor-pointer ${
