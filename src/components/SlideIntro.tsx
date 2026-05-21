@@ -51,14 +51,7 @@ export default function SlideIntro({ onNext }: SlideIntroProps) {
         </div>
 
         {/* Footer info & CTA */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mt-6 pt-4 border-t border-[#2A2A2E]">
-          <div>
-            <span className="inline-block bg-[#1A1A1E] text-[#D4A373] border border-[#2A2A2E] text-[10px] px-2 py-0.5 rounded-sm font-mono mb-0.5 uppercase">
-              СТАТУС ИЗДАНИЯ
-            </span>
-            <span className="block text-xs text-[#8A8A8E] font-medium">Черновик для согласования сторон</span>
-          </div>
-
+        <div className="flex justify-end gap-4 mt-6 pt-4 border-t border-[#2A2A2E] w-full">
           <button
             onClick={onNext}
             className="w-full sm:w-auto px-6 py-3 bg-[#D4A373] hover:bg-[#c29262] text-black font-semibold text-xs rounded-xl transition duration-200 shadow-lg hover:shadow-xl active:scale-95 cursor-pointer flex items-center justify-center gap-2"
