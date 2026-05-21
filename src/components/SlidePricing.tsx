@@ -13,7 +13,6 @@ export default function SlidePricing() {
   };
 
   // Fixed static values matching the proposal
-  const totalWeeksText = "17–19 недель";
   const totalCostText = "6 780 000 ₸";
 
   return (
@@ -25,7 +24,7 @@ export default function SlidePricing() {
             Стоимость и Сметный План
           </h2>
           <p className="text-sm text-[#8A8A8E]">
-            Оценка стоимости и планируемые сроки реализации этапов разработки мобильного приложения.
+            Оценка стоимости и оптимизированный график под сжатые сроки в 10 недель (параллельная разработка по запросу заказчика).
           </p>
         </div>
       </div>
@@ -45,21 +44,33 @@ export default function SlidePricing() {
               {INITIAL_PHASES.map((p) => {
                 // Formatting custom duration text ranges since it's static now
                 let durationText = `${p.durationWeeks} нед.`;
+                let isParallel = false;
                 if (p.id === 2) durationText = "8–9 нед.";
-                if (p.id === 3) durationText = "7–8 нед.";
-                if (p.id === 4) durationText = "2–3 нед.";
+                if (p.id === 3) {
+                  durationText = "7–8 нед.";
+                  isParallel = true;
+                }
+                if (p.id === 4) {
+                  durationText = "2–3 нед.";
+                  isParallel = true;
+                }
 
                 return (
                   <div key={p.id} className="p-4 flex flex-col gap-2.5 sm:grid sm:grid-cols-12 sm:gap-2 sm:items-center hover:bg-[#1A1A1E]/20 transition text-left">
                     {/* Phase details */}
                     <div className="sm:col-span-6 md:col-span-7 space-y-1">
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-2 flex-wrap">
                         <span className="inline-flex items-center justify-center w-5 h-5 text-[10px] font-bold text-[#D4A373] bg-[#D4A373]/10 rounded-full shrink-0">
                           {p.id}
                         </span>
                         <h4 className="text-sm font-semibold text-white leading-tight">
                           {p.title}
                         </h4>
+                        {isParallel && (
+                          <span className="inline-flex items-center bg-[#D4A373]/10 border border-[#D4A373]/20 text-[#D4A373] text-[9px] px-1.5 py-0.5 rounded font-mono uppercase tracking-wider font-semibold">
+                            Параллельный этап
+                          </span>
+                        )}
                       </div>
                       <p className="text-[11px] text-[#8A8A8E] leading-relaxed">
                         Конечный результат: <span className="text-[#E0E0E0]">{p.result}</span>
@@ -116,9 +127,10 @@ export default function SlidePricing() {
                   <span className="text-[#8A8A8E] flex items-center gap-1.5">
                     <Clock className="w-4 h-4" /> Общий срок разработки
                   </span>
-                  <span className="font-bold text-white">
-                    {totalWeeksText}
-                  </span>
+                  <div className="text-right">
+                    <span className="line-through text-[#8A8A8E] text-xs mr-2">17–19 нед.</span>
+                    <span className="font-bold text-[#D4A373]">10 недель (2.5 мес.)*</span>
+                  </div>
                 </div>
 
                 <div className="flex justify-between items-center text-sm">
@@ -138,6 +150,9 @@ export default function SlidePricing() {
                   </div>
                   <p className="text-[10px] text-[#8A8A8E] mt-2 leading-snug">
                     *Включает в себя проектирование, дизайн, программирование бэкенда и фронтенда, отладку и публикацию в App Store и Google Play.
+                  </p>
+                  <p className="text-[10px] text-amber-400/90 mt-1.5 leading-snug">
+                    *Срок сокращен до 10 недель (2.5 мес.) за счет параллельного ведения дизайна, бэкенда и мобильной разработки по запросу заказчика.
                   </p>
                 </div>
               </div>
