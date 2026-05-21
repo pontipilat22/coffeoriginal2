@@ -36,7 +36,7 @@ export default function App() {
   };
 
   return (
-    <div className="h-screen max-h-screen bg-[#0A0A0B] text-[#E0E0E0] flex flex-col justify-between p-3 sm:p-4 md:p-6 font-sans overflow-hidden">
+    <div className="min-h-screen lg:h-screen lg:max-h-screen bg-[#0A0A0B] text-[#E0E0E0] flex flex-col justify-between p-3 sm:p-4 md:p-6 font-sans overflow-y-auto lg:overflow-hidden">
       
       {/* Upper Brand / Navigation Header */}
       <header className="w-full max-w-7xl mx-auto mb-4 flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4 bg-[#141417] border border-[#2A2A2E] p-4 rounded-3xl shadow-sm shrink-0">
@@ -78,11 +78,11 @@ export default function App() {
       </header>
 
       {/* Primary Slide Display Sandbox Grid */}
-      <main className="flex-1 min-h-0 w-full max-w-7xl mx-auto flex flex-col py-1">
-        <div className="flex-1 min-h-0 bg-[#141417] rounded-[32px] p-5 sm:p-6 md:p-8 shadow-lg border border-[#2A2A2E] flex flex-col justify-between relative">
+      <main className="flex-1 lg:min-h-0 w-full max-w-7xl mx-auto flex flex-col py-1">
+        <div className="flex-1 lg:min-h-0 bg-[#141417] rounded-[32px] p-4 sm:p-6 md:p-8 shadow-lg border border-[#2A2A2E] flex flex-col justify-between relative">
           
           {/* Active component load - scrollable internally if content overflows */}
-          <div className="flex-1 min-h-0 overflow-y-auto pr-1">
+          <div className="flex-1 lg:min-h-0 lg:overflow-y-auto lg:pr-1">
             {currentSlide === 0 && <SlideIntro onNext={handleNext} />}
             {currentSlide === 1 && <SlidePricing />}
             {currentSlide === 2 && <SlideSpecs />}
